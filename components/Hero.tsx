@@ -21,15 +21,32 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#030014]">
-      {/* Background Graphic Design Focused Image with Neon Overlays */}
+      {/* --- LEVEL-UP CINEMATIC BACKGROUND --- */}
       <div className="absolute inset-0 z-0">
+        {/* Base Texture: Dark Wavy 3D Mesh */}
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-screen scale-110"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2000')` }}
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2000')` }}
         />
-        {/* Neon Gradient Blobs */}
-        <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[120px] animate-pulse delay-1000" />
+        
+        {/* The "Milad" Signature Glowing Orb at the Bottom */}
+        <div className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw] rounded-full pointer-events-none z-0">
+          {/* Main Core Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.4)_0%,rgba(34,211,238,0.2)_30%,transparent_70%)] blur-[100px] animate-[pulse_4s_infinite]"></div>
+          
+          {/* Internal Structure Lines (CSS-only Grid approximation for the lattice look) */}
+          <div className="absolute inset-0 opacity-20 border-[0.5px] border-white/20 rounded-full rotate-[15deg] scale-95"></div>
+          <div className="absolute inset-0 opacity-10 border-[0.5px] border-white/10 rounded-full -rotate-[15deg] scale-90"></div>
+          
+          {/* Intense Bottom Rim Light */}
+          <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-full h-[20%] bg-gradient-to-t from-cyan-400/30 to-transparent blur-3xl"></div>
+        </div>
+        
+        {/* Floating Particle Starfield */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.15] pointer-events-none"></div>
+
+        {/* Ambient Top Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030014] via-transparent to-transparent opacity-100"></div>
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-20 lg:pt-0">
@@ -91,15 +108,23 @@ const Hero: React.FC = () => {
                 <div className="w-full h-full bg-gradient-to-br from-cyan-500/20 via-blue-600/20 to-purple-600/20 rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden border border-white/5 transition-all duration-700 group-hover:bg-opacity-40">
                   <div className="absolute inset-0 bg-black/40 opacity-30 mix-blend-overlay"></div>
                   
-                  {/* Central Content Area */}
-                  <div className="relative z-10 flex flex-col items-center justify-center -mt-8">
-                    {/* The background artistic 'M' */}
-                    <div className="text-[12rem] font-black text-white/5 select-none drop-shadow-2xl transition-all duration-1000 group-hover:scale-110 group-hover:text-cyan-400/20 leading-[0.8]">
-                      M
+                  {/* Central Content Area Re-designed to match requested "Fahad Malik" style */}
+                  <div className="relative z-10 flex flex-col items-center justify-center -mt-4">
+                    {/* The initials 'MI.' */}
+                    <div className="relative flex items-end">
+                      <div className="text-[10rem] font-black text-white select-none drop-shadow-2xl transition-all duration-1000 group-hover:scale-110 group-hover:text-cyan-100 leading-[0.8]">
+                        MI
+                      </div>
+                      {/* The Dot */}
+                      <div className="w-10 h-10 bg-cyan-400 rounded-full mb-3 ml-2 shadow-[0_0_20px_rgba(34,211,238,0.8)] animate-pulse"></div>
                     </div>
-                    {/* MOEEZ Name below M */}
-                    <div className="text-4xl font-black tracking-[0.4em] text-white/30 group-hover:text-cyan-400 group-hover:neon-text-cyan transition-all duration-700 mt-4">
-                      MOEEZ
+
+                    {/* Horizontal Divider Line */}
+                    <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent my-6"></div>
+
+                    {/* Full Name: MOEEZ IMRAN */}
+                    <div className="text-2xl font-black tracking-[0.6em] text-cyan-400 group-hover:neon-text-cyan transition-all duration-700 uppercase whitespace-nowrap">
+                      MOEEZ IMRAN
                     </div>
                   </div>
                   

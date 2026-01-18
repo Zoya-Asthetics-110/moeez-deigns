@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 const Footer: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [isEmailRedirecting, setIsEmailRedirecting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,6 +42,18 @@ const Footer: React.FC = () => {
     }, 2500); 
   };
 
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsEmailRedirecting(true);
+    
+    // Play the digital transmission transition for 2 seconds
+    setTimeout(() => {
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=moeezi396@gmail.com', '_blank');
+      // Briefly keep overlay to hide the jump back
+      setTimeout(() => setIsEmailRedirecting(false), 500);
+    }, 2000); 
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -51,19 +64,13 @@ const Footer: React.FC = () => {
       {/* --- CINEMATIC BEHANCE BRAND REVEAL --- */}
       {isRedirecting && (
         <div className="fixed inset-0 z-[1000000] flex items-center justify-center bg-[#030014]">
-          {/* Subtle Grid Background */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
              <div className="absolute inset-0 blueprint-grid scale-110"></div>
           </div>
-
-          {/* Liquid Expanding Background */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-[50px] h-[50px] bg-white rounded-full animate-[portal-reveal_2.2s_cubic-bezier(0.8,0,0.2,1)_forwards]"></div>
           </div>
-          
-          {/* Logo Content */}
           <div className="relative z-10 flex flex-col items-center">
-             {/* Main Logo Text with Glitch/Glimmer */}
              <div className="flex gap-2 mb-8 overflow-hidden">
                 {['B','E','H','A','N','C','E'].map((char, i) => (
                   <span 
@@ -75,14 +82,43 @@ const Footer: React.FC = () => {
                   </span>
                 ))}
              </div>
-
-             {/* Animated Underline matches user image style */}
              <div className="w-48 h-[2px] bg-[#030014]/10 relative overflow-hidden rounded-full opacity-0 animate-[fade-in_0.5s_forwards_1.2s]">
                 <div className="absolute inset-0 bg-cyan-500 animate-[loading-line_1.5s_ease-in-out_infinite]"></div>
              </div>
-
              <p className="mt-8 text-[11px] font-black text-[#030014] uppercase tracking-[0.8em] opacity-0 animate-[fade-in_0.5s_forwards_1.5s]">
                 Connecting to Portfolio
+             </p>
+          </div>
+        </div>
+      )}
+
+      {/* --- CINEMATIC EMAIL TRANSMISSION REVEAL --- */}
+      {isEmailRedirecting && (
+        <div className="fixed inset-0 z-[1000000] flex items-center justify-center bg-[#030014]">
+          <div className="absolute inset-0 opacity-10">
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.2)_0%,transparent_70%)]"></div>
+          </div>
+          
+          {/* Neon Vortex Circles */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[100px] h-[100px] border-4 border-cyan-400 rounded-full animate-[email-expand_1.5s_ease-out_forwards]"></div>
+            <div className="w-[100px] h-[100px] border-4 border-purple-500 rounded-full animate-[email-expand_1.5s_ease-out_0.2s_forwards]"></div>
+            <div className="w-[100px] h-[100px] border-4 border-white rounded-full animate-[email-expand_1.5s_ease-out_0.4s_forwards]"></div>
+          </div>
+
+          <div className="relative z-10 flex flex-col items-center">
+             <div className="overflow-hidden mb-6">
+                <h2 className="text-5xl md:text-8xl font-black text-white italic tracking-tighter animate-[email-text-slide_0.8s_cubic-bezier(0.19,1,0.22,1)_forwards]">
+                  TRANSMITTING<span className="text-cyan-400">.</span>
+                </h2>
+             </div>
+             
+             <div className="w-64 h-1 bg-white/5 relative overflow-hidden rounded-full border border-white/10">
+                <div className="absolute inset-0 bg-cyan-400 animate-[loading-line_1s_ease-in-out_infinite]"></div>
+             </div>
+             
+             <p className="mt-6 text-[10px] font-black text-gray-400 uppercase tracking-[0.6em] animate-pulse">
+                Establishing Secure Link
              </p>
           </div>
         </div>
@@ -111,13 +147,12 @@ const Footer: React.FC = () => {
             
             <div className="space-y-10">
               <a 
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=moeezi396@gmail.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex flex-col items-start gap-2"
+                href="#" 
+                onClick={handleEmailClick}
+                className="group flex flex-col items-start gap-2 cursor-pointer"
               >
-                <span className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em]">Email Me</span>
-                <span className="text-3xl lg:text-5xl font-black text-white group-hover:text-cyan-400 transition-colors duration-300 break-all">
+                <span className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em] group-hover:text-cyan-400 transition-colors">Email Me</span>
+                <span className="text-3xl lg:text-5xl font-black text-white transition-all duration-300 break-all neon-email-text group-hover:scale-105 origin-left">
                   moeezi396@gmail.com
                 </span>
               </a>
@@ -220,6 +255,18 @@ const Footer: React.FC = () => {
       </div>
 
       <style>{`
+        .neon-email-text {
+          text-shadow: 0 0 10px rgba(34, 211, 238, 0.4), 0 0 20px rgba(34, 211, 238, 0.2);
+          animation: neon-email-breath 4s infinite ease-in-out;
+        }
+        .group:hover .neon-email-text {
+          color: #22d3ee;
+          text-shadow: 0 0 15px rgba(34, 211, 238, 0.8), 0 0 30px rgba(34, 211, 238, 0.4), 0 0 45px rgba(168, 85, 247, 0.3);
+        }
+        @keyframes neon-email-breath {
+          0%, 100% { opacity: 1; filter: brightness(1); }
+          50% { opacity: 0.8; filter: brightness(1.2); }
+        }
         @keyframes portal-reveal {
           0% { transform: scale(0); opacity: 1; border-radius: 50%; }
           35% { transform: scale(1.2); opacity: 1; border-radius: 50%; }
@@ -238,7 +285,14 @@ const Footer: React.FC = () => {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
         }
-        /* New Hover Animations */
+        @keyframes email-expand {
+          0% { transform: scale(0); opacity: 1; border-width: 10px; }
+          100% { transform: scale(40); opacity: 0; border-width: 1px; }
+        }
+        @keyframes email-text-slide {
+          from { transform: translateY(100%) skewY(10deg); opacity: 0; }
+          to { transform: translateY(0) skewY(0deg); opacity: 1; }
+        }
         @keyframes hover-breathe {
           0%, 100% { transform: translateY(-16px) scale(1); border-color: rgba(34, 211, 238, 0.3); box-shadow: 0 40px 100px rgba(34, 211, 238, 0.15); }
           50% { transform: translateY(-20px) scale(1.02); border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 50px 120px rgba(168, 85, 247, 0.25); }

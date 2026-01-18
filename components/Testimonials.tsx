@@ -103,21 +103,21 @@ const Testimonials: React.FC = () => {
       name: "Alex Thompson",
       role: "CEO",
       company: "Vanguard Tech",
-      avatar: "https://i.pravatar.cc/150?u=alex",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&auto=format&fit=crop",
       content: "Moeez transformed our brand identity from generic to iconic. His attention to detail and unique neon aesthetic gave us the edge we needed in a crowded market."
     },
     {
       name: "Sarah Jenkins",
       role: "Creative Director",
       company: "Studio Bloom",
-      avatar: "https://i.pravatar.cc/150?u=sarah",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop",
       content: "Working with Moeez was an absolute breeze. He understands design psychology and knows exactly how to make visuals pop. Our social engagement increased by 40%!"
     },
     {
       name: "Marcus Chen",
       role: "Founder",
       company: "Echo Labs",
-      avatar: "https://i.pravatar.cc/150?u=marcus",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=400&auto=format&fit=crop",
       content: "The UI/UX Moeez designed for our platform is simply breathtaking. Users keep complimenting the smooth aesthetics and the intuitive flow. A true master of his craft."
     }
   ];
