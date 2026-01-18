@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Project, Skill, Concept, PressAsset, Stat } from './types';
+import { Project, Skill, Concept, PressAsset, Stat, ProcessStep } from './types';
 
 export const PROJECTS: Project[] = [
   {
@@ -61,6 +61,37 @@ export const CONCEPTS: Concept[] = [
     tags: ["Interface", "Motion"],
     image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=800",
     year: "2024"
+  }
+];
+
+export const PROCESS_STEPS: ProcessStep[] = [
+  {
+    id: "01",
+    title: "Discovery & Strategy",
+    description: "We deep-dive into your brand's DNA, analyzing competitors and defining a visual trajectory that ensures market disruption.",
+    icon: "🔍",
+    tags: ["RESEARCH", "AUDIT", "MOODBOARD"]
+  },
+  {
+    id: "02",
+    title: "Ideation & Sketching",
+    description: "The conceptual phase where raw ideas become visual blueprints. We explore multiple directions to find the one true 'spark'.",
+    icon: "🎨",
+    tags: ["CONCEPTING", "VECTORING", "STYLE"]
+  },
+  {
+    id: "03",
+    title: "High-Fidelity Crafting",
+    description: "Transforming chosen concepts into pixel-perfect assets with cinematic lighting, depth, and strategic color theory.",
+    icon: "✨",
+    tags: ["REFINEMENT", "3D", "TYPOGRAPHY"]
+  },
+  {
+    id: "04",
+    title: "Final Delivery",
+    description: "Deployment of all brand assets in high-resolution formats, including full identity guides and digital ecosystems.",
+    icon: "🚀",
+    tags: ["PACKAGING", "HANDOVER", "SUPPORT"]
   }
 ];
 

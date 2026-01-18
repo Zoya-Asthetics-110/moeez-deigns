@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     { name: 'Home', id: 'home' },
     { name: 'About', id: 'about' },
     { name: 'Work', id: 'work' },
+    { name: 'Process', id: 'process' },
     { name: 'Concepts', id: 'concepts' },
     { name: 'Skills', id: 'skills' },
     { name: 'Stats', id: 'stats' },
@@ -110,7 +111,7 @@ const Header: React.FC = () => {
         </button>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-8 lg:gap-10 items-center">
+        <div className="hidden md:flex gap-6 lg:gap-8 items-center">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -118,7 +119,7 @@ const Header: React.FC = () => {
                 key={item.name} 
                 href={`#${item.id}`}
                 onClick={(e) => handleScrollTo(e, item.id)}
-                className={`text-[10px] lg:text-[11px] font-black uppercase tracking-[0.25em] transition-all duration-300 relative py-2 ${isActive ? 'text-cyan-400 scale-105' : 'text-gray-400 hover:text-white'}`}
+                className={`text-[9px] lg:text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-300 relative py-2 ${isActive ? 'text-cyan-400 scale-105' : 'text-gray-400 hover:text-white'}`}
               >
                 {item.name}
                 <span className={`absolute bottom-0 left-0 h-[2.5px] bg-cyan-400 transition-all duration-500 ${isActive ? 'w-full shadow-[0_0_10px_#22d3ee]' : 'w-0'}`}></span>
@@ -129,24 +130,24 @@ const Header: React.FC = () => {
           {/* --- RE-DESIGNED DOWNLOAD CV BUTTON --- */}
           <button 
             onClick={handleDownloadCV}
-            className={`group/cv relative h-[48px] lg:h-[52px] min-w-[160px] lg:min-w-[190px] rounded-2xl transition-all duration-500 overflow-hidden active:scale-95 shadow-[0_0_20px_rgba(34,211,238,0.15)] border ${downloadStatus === 'ready' ? 'bg-cyan-400 border-cyan-400' : 'bg-black border-cyan-400/60 hover:border-cyan-400'}`}
+            className={`group/cv relative h-[42px] lg:h-[48px] min-w-[140px] lg:min-w-[170px] rounded-2xl transition-all duration-500 overflow-hidden active:scale-95 shadow-[0_0_20px_rgba(34,211,238,0.15)] border ${downloadStatus === 'ready' ? 'bg-cyan-400 border-cyan-400' : 'bg-black border-cyan-400/60 hover:border-cyan-400'}`}
           >
             {/* Liquid wave background effect for Ready state */}
             <div className={`absolute inset-0 bg-white transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] ${downloadStatus === 'ready' ? 'translate-y-0' : 'translate-y-full'}`}></div>
 
-            <div className="relative z-10 w-full h-full px-4 lg:px-6 flex items-center justify-between">
+            <div className="relative z-10 w-full h-full px-4 lg:px-5 flex items-center justify-between">
               
               {/* Idle Content */}
-              <div className={`flex items-center gap-2 lg:gap-3 transition-all duration-500 ${downloadStatus !== 'idle' ? 'translate-y-[-40px] opacity-0' : 'translate-y-0 opacity-100'}`}>
-                <span className="text-white font-bold text-[12px] lg:text-sm tracking-tight">Download CV</span>
-                <svg className="w-4 h-4 lg:w-5 h-5 text-white transition-transform group-hover/cv:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`flex items-center gap-2 transition-all duration-500 ${downloadStatus !== 'idle' ? 'translate-y-[-40px] opacity-0' : 'translate-y-0 opacity-100'}`}>
+                <span className="text-white font-bold text-[10px] lg:text-xs tracking-tight">Download CV</span>
+                <svg className="w-4 h-4 text-white transition-transform group-hover/cv:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
               </div>
 
               {/* Ready Content */}
               <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${downloadStatus === 'ready' ? 'translate-y-0 opacity-100' : 'translate-y-[40px] opacity-0'}`}>
-                <span className="text-black font-black text-[10px] uppercase tracking-[0.4em]">READY!</span>
+                <span className="text-black font-black text-[9px] uppercase tracking-[0.4em]">READY!</span>
               </div>
 
               {/* Loading Content */}

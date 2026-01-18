@@ -32,6 +32,14 @@ export interface Stat {
   color: string;
 }
 
+export interface ProcessStep {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  tags: string[];
+}
+
 export interface Skill {
   name: string;
   level: number;
