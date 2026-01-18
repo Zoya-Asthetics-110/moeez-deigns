@@ -2,6 +2,23 @@
 import React from 'react';
 
 const Hero: React.FC = () => {
+  const handleScrollTo = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const tagline = "I Design Visuals That Speak, Sell & Stand Out. Elevating brand identities through neon-infused digital art.";
+  const words = tagline.split(' ');
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#030014]">
       {/* Background Graphic Design Focused Image with Neon Overlays */}
@@ -13,12 +30,6 @@ const Hero: React.FC = () => {
         {/* Neon Gradient Blobs */}
         <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[120px] animate-pulse delay-1000" />
-        
-        {/* Animated Lines/Sparks */}
-        <div className="absolute top-0 right-0 w-full h-full pointer-events-none overflow-hidden">
-          <div className="absolute top-[20%] right-[10%] w-64 h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent rotate-[30deg] animate-[ping_3s_linear_infinite]" />
-          <div className="absolute bottom-[30%] left-[5%] w-96 h-[1px] bg-gradient-to-r from-transparent via-purple-400 to-transparent rotate-[-15deg] animate-[ping_4s_linear_infinite] delay-700" />
-        </div>
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-20 lg:pt-0">
@@ -31,84 +42,105 @@ const Hero: React.FC = () => {
             </div>
             
             <div className="space-y-0">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-grotesk tracking-tighter leading-[0.85] mb-2">
-                <span className="block text-white neon-text-white drop-shadow-lg">Creative</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 neon-text-cyan py-2">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-grotesk tracking-tighter leading-[0.9] mb-2">
+                <span className="block text-white neon-text-white drop-shadow-lg transition-transform hover:translate-x-2 duration-500 cursor-default">Creative</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 neon-text-cyan py-1 transition-transform hover:translate-x-2 duration-700 cursor-default">
                   Graphic Designer
                 </span>
               </h1>
             </div>
             
-            <p className="max-w-lg text-lg md:text-xl text-gray-300 font-light leading-relaxed border-l-4 border-cyan-500/50 pl-6 italic mt-6">
-              I Design Visuals That Speak, Sell & Stand Out. Elevating brand identities through neon-infused digital art.
-            </p>
+            {/* Animated Tagline Text */}
+            <div className="max-w-lg text-lg md:text-xl text-gray-400 font-light leading-relaxed border-l-4 border-cyan-500/50 pl-6 italic mt-6 flex flex-wrap gap-x-[0.3em] gap-y-1">
+              {words.map((word, index) => (
+                <span 
+                  key={index} 
+                  className="animate-word-highlight"
+                  style={{ animationDelay: `${index * 0.25}s` }}
+                >
+                  {word}
+                </span>
+              ))}
+            </div>
 
             <div className="flex flex-wrap gap-6 pt-8">
-              <button className="group relative px-10 py-5 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold rounded-2xl shadow-lg shadow-purple-500/30 transition-all hover:scale-110 active:scale-95 overflow-hidden">
+              <button 
+                onClick={(e) => handleScrollTo(e, 'work')}
+                className="group relative px-10 py-5 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold rounded-2xl shadow-lg shadow-purple-500/30 transition-all hover:scale-110 active:scale-95 overflow-hidden"
+              >
                 <span className="relative z-10">View My Work</span>
                 <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </button>
-              <button className="px-10 py-5 border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-cyan-400/10 hover:border-cyan-400 transition-all active:scale-95 backdrop-blur-md glow-cyan">
+              <button 
+                onClick={(e) => handleScrollTo(e, 'contact')}
+                className="px-10 py-5 border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-cyan-400/10 hover:border-cyan-400 transition-all active:scale-95 backdrop-blur-md glow-cyan"
+              >
                 Hire Me
               </button>
             </div>
           </div>
 
-          {/* Right Side: Auto Animated Assets */}
-          <div className="relative h-[550px] lg:h-[650px] flex items-center justify-center">
+          {/* Right Side: Enhanced Interactive Asset */}
+          <div className="relative h-[550px] lg:h-[650px] flex items-center justify-center pt-10 perspective-1000">
             
-            {/* Top Right: Brand Card */}
-            <div className="absolute top-10 right-4 lg:right-10 z-20 w-72 h-48 bg-[#0a0520]/80 backdrop-blur-xl border border-purple-500/30 rounded-3xl p-5 animate-float-delayed -rotate-6 neon-border-purple group hover:scale-105 transition-transform">
-              <div className="h-full w-full border border-purple-500/10 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden">
-                <div className="text-5xl mb-2">⚡</div>
-                <h4 className="text-xl font-black tracking-widest text-white uppercase italic">Falcon</h4>
-                <div className="text-[8px] text-purple-400 tracking-[0.5em] font-bold">PREMIUM FITNESS</div>
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-purple-500/20 blur-xl" />
+            {/* Main Center Container for Card + Floating Tool Logos */}
+            <div className="relative z-30 w-full max-w-sm h-80 animate-float preserve-3d group">
+              
+              {/* Moeez Art Card with 3D Tilt and Shine */}
+              <div className="card-tilt w-full h-full bg-white/5 backdrop-blur-3xl border border-cyan-400/20 rounded-[2.5rem] p-6 neon-border-cyan cursor-pointer overflow-hidden relative hover-shine shadow-2xl">
+                <div className="w-full h-full bg-gradient-to-br from-cyan-500/20 via-blue-600/20 to-purple-600/20 rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden border border-white/5 transition-all duration-700 group-hover:bg-opacity-40">
+                  <div className="absolute inset-0 bg-black/40 opacity-30 mix-blend-overlay"></div>
+                  
+                  {/* Central Content Area */}
+                  <div className="relative z-10 flex flex-col items-center justify-center -mt-8">
+                    {/* The background artistic 'M' */}
+                    <div className="text-[12rem] font-black text-white/5 select-none drop-shadow-2xl transition-all duration-1000 group-hover:scale-110 group-hover:text-cyan-400/20 leading-[0.8]">
+                      M
+                    </div>
+                    {/* MOEEZ Name below M */}
+                    <div className="text-4xl font-black tracking-[0.4em] text-white/30 group-hover:text-cyan-400 group-hover:neon-text-cyan transition-all duration-700 mt-4">
+                      MOEEZ
+                    </div>
+                  </div>
+                  
+                  {/* Glowing Core Effect */}
+                  <div className="absolute w-40 h-40 bg-cyan-400/10 blur-[80px] rounded-full animate-pulse group-hover:bg-cyan-400/30 group-hover:scale-150 transition-all duration-1000" />
+                  
+                  {/* Design Particles on Hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
+                     <div className="absolute top-10 left-10 w-1.5 h-1.5 bg-white rounded-full animate-ping" />
+                     <div className="absolute bottom-10 right-10 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping delay-300" />
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Main Center: Social Media Card */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-80 h-96 bg-[#050112]/90 backdrop-blur-2xl border border-cyan-400/40 rounded-[2rem] p-6 animate-float neon-border-cyan group hover:scale-110 transition-transform cursor-pointer">
-              <div className="w-full h-56 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 rounded-2xl mb-5 flex items-center justify-center relative overflow-hidden shadow-2xl">
-                 <div className="absolute inset-0 bg-black/10 opacity-30 mix-blend-overlay"></div>
-                 <div className="text-9xl font-black italic text-white/10 select-none">M</div>
-                 <div className="absolute flex flex-col items-center">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-3xl mb-2 shadow-xl">f</div>
-                    <div className="text-white font-bold tracking-widest uppercase text-xs">Modern Art</div>
-                 </div>
+              {/* Tool Logos on Borders */}
+              <div className="absolute left-0 top-1/2 -translate-x-[70%] -translate-y-1/2 w-16 h-16 bg-[#1E1E1E] rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 p-3 z-[100] tool-logo figma-hover cursor-pointer">
+                <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                  <path d="M19 28.5C19 23.2533 14.7467 19 9.5 19C4.2533 19 0 23.2533 0 28.5C0 33.7467 4.2533 38 9.5 38C14.7467 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.2533 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                  <path d="M0 9.5C0 14.7467 4.2533 19 9.5 19H19V0H9.5C4.2533 0 0 4.2533 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M19 19V38H28.5C33.7467 38 38 33.7467 38 28.5C38 23.2533 33.7467 19 28.5 19H19Z" fill="#A259FF"/>
+                </svg>
               </div>
-              <h3 className="text-2xl font-black text-center text-white">Social Media</h3>
-              <p className="text-sm text-center text-cyan-400 uppercase tracking-widest font-black mt-1">Marketing</p>
-              <div className="mt-5 h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-cyan-400 to-purple-500 w-[85%]"></div>
-              </div>
-            </div>
 
-            {/* Bottom Left: Visual Profile Card */}
-            <div className="absolute bottom-10 left-0 lg:left-10 z-40 w-64 h-80 bg-white/5 backdrop-blur-xl border border-pink-500/30 rounded-3xl overflow-hidden animate-float-reverse rotate-3 neon-border-purple group hover:rotate-0 transition-all">
-              <img 
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800" 
-                alt="Brand Identity"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#030014] via-[#030014]/80 to-transparent">
-                 <div className="h-3 w-16 bg-pink-500 rounded-full mb-2 glow-purple"></div>
-                 <h4 className="text-sm font-bold text-white tracking-wide">Brand Ambience</h4>
+              <div className="absolute -right-6 top-4 -translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#001E36] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#31A8FF]/30 z-[100] tool-logo ps-hover cursor-pointer overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#001E36] to-[#31A8FF]/20"></div>
+                <span className="relative z-10 text-[#31A8FF] font-black text-2xl tracking-tighter">Ps</span>
+                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#31A8FF]"></div>
               </div>
-            </div>
 
-            {/* Bottom Right: Business Strategy Card */}
-            <div className="absolute bottom-20 right-0 z-10 w-64 h-72 bg-gradient-to-br from-indigo-900/60 to-black border border-white/10 rounded-[2rem] p-8 flex flex-col justify-end animate-float rotate-12 neon-border-cyan group hover:rotate-6 transition-all">
-               <div className="absolute top-8 left-8 text-4xl opacity-40">📈</div>
-               <h4 className="text-3xl font-black text-white leading-tight mb-3">Boost Your Business!</h4>
-               <div className="flex gap-1">
-                 <div className="w-full h-1 bg-cyan-400 rounded-full"></div>
-                 <div className="w-1/2 h-1 bg-white/20 rounded-full"></div>
-               </div>
+              <div className="absolute -right-6 bottom-4 translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#330000] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#FF9A00]/30 z-[100] tool-logo ai-hover cursor-pointer overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#330000] to-[#FF9A00]/20"></div>
+                <span className="relative z-10 text-[#FF9A00] font-black text-2xl tracking-tighter">Ai</span>
+                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#FF9A00]"></div>
+              </div>
+
             </div>
 
             {/* Decorative background light sources */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-indigo-500/10 rounded-full blur-[120px] z-0"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-indigo-500/5 rounded-full blur-[150px] z-0 pointer-events-none"></div>
           </div>
         </div>
       </div>
