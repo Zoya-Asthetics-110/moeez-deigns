@@ -13,34 +13,38 @@ const CustomCursor: React.FC = () => {
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
+      // Use clientX and clientY for viewport-relative positioning
       setPosition({ x: e.clientX, y: e.clientY });
       if (!isVisible) setIsVisible(true);
+      
+      // Dynamic hover check: manually check the element at current position
+      // since global 'cursor: none' can interfere with standard hover styles
+      const target = e.target as HTMLElement;
+      if (target) {
+        const isClickable = 
+          target.tagName === 'BUTTON' || 
+          target.tagName === 'A' || 
+          target.closest('button') || 
+          target.closest('a') || 
+          target.closest('.cursor-pointer') ||
+          target.classList.contains('cursor-pointer');
+        
+        setIsHovering(!!isClickable);
+      }
     };
 
     const onMouseDown = () => setIsMouseDown(true);
     const onMouseUp = () => setIsMouseDown(false);
 
-    const onMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      // Check if it's a clickable element or has a pointer cursor defined in CSS
-      const isClickable = 
-        target.tagName === 'BUTTON' || 
-        target.tagName === 'A' || 
-        target.closest('button') || 
-        target.closest('a') || 
-        target.closest('.cursor-pointer') ||
-        window.getComputedStyle(target).cursor === 'pointer';
-      
-      setIsHovering(!!isClickable);
-    };
-
+    // Use a more robust visibility check
     const onMouseLeave = () => setIsVisible(false);
     const onMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mouseup', onMouseUp);
-    window.addEventListener('mouseover', onMouseOver);
+    
+    // Attach to document to ensure it covers the whole viewport reliably
     document.addEventListener('mouseleave', onMouseLeave);
     document.addEventListener('mouseenter', onMouseEnter);
 
@@ -48,13 +52,12 @@ const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mouseup', onMouseUp);
-      window.removeEventListener('mouseover', onMouseOver);
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);
     };
   }, [isVisible]);
 
-  // Smooth elastic follow logic for the outer ring
+  // Smooth elastic follow logic for the outer ring using requestAnimationFrame
   useEffect(() => {
     let animationFrameId: number;
     
@@ -64,11 +67,11 @@ const CustomCursor: React.FC = () => {
       trailRef.current.y += (position.y - trailRef.current.y) * ease;
 
       if (ringRef.current) {
-        // Apply smooth transformations to the outer ring
+        // Precise transform for the outer ring
         ringRef.current.style.transform = `translate3d(${trailRef.current.x - 22}px, ${trailRef.current.y - 22}px, 0) scale(${isHovering ? 2.2 : isMouseDown ? 0.8 : 1})`;
       }
       if (dotRef.current) {
-        // Keep the central dot locked to the exact mouse position
+        // Precise transform for the center dot
         dotRef.current.style.transform = `translate3d(${position.x - 5}px, ${position.y - 5}px, 0) scale(${isMouseDown ? 0.6 : 1})`;
       }
 
@@ -79,10 +82,11 @@ const CustomCursor: React.FC = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, [position, isHovering, isMouseDown]);
 
+  // Prevent rendering if not visible or if window is too small
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[99999] hidden lg:block">
+    <div className="fixed inset-0 pointer-events-none z-[999999] hidden lg:block overflow-hidden">
       {/* Thick Outer Glow Ring (Elastic Follower) */}
       <div 
         ref={ringRef}
