@@ -5,6 +5,7 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isClicked, setIsClicked] = useState(false);
 
   const navItems = [
     { name: 'Home', id: 'home' },
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
     { name: 'Work', id: 'work' },
     { name: 'Skills', id: 'skills' },
     { name: 'Services', id: 'services' },
+    { name: 'Reviews', id: 'testimonials' },
     { name: 'Contact', id: 'contact' }
   ];
 
@@ -64,8 +66,10 @@ const Header: React.FC = () => {
 
   const handleDownloadCV = (e: React.MouseEvent) => {
     e.preventDefault();
-    // The visual active state is handled by CSS, logic can go here.
+    setIsClicked(true);
     console.log("Downloading CV...");
+    // Reset click animation after 1 second
+    setTimeout(() => setIsClicked(false), 1000);
   };
 
   return (
@@ -96,25 +100,37 @@ const Header: React.FC = () => {
             );
           })}
           
-          {/* Enhanced Download CV Button */}
-          <div className="cv-btn-container group ml-4 rounded-xl">
-            <div className="cv-btn-border"></div>
+          {/* Enhanced Download CV Button with Neon Border and Liquid Click Animation */}
+          <div className="group ml-4 relative p-[1.5px] overflow-hidden rounded-[13px] transition-transform hover:scale-105 active:scale-95">
+            {/* The Rotating Neon Border (Hover State) */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
+              <div className="absolute inset-[-250%] bg-[conic-gradient(from_0deg,transparent,#22d3ee,#a855f7,#22d3ee,transparent)] animate-[spin_3s_linear_infinite]"></div>
+            </div>
+
             <button 
               onClick={handleDownloadCV}
-              className="relative flex items-center gap-3 px-7 py-3 bg-[#0a0520] text-white rounded-[11px] text-[10px] font-black uppercase tracking-widest transition-all overflow-hidden z-10 group-active:scale-95"
+              className="relative flex items-center gap-3 px-7 py-3 bg-[#0a0520] text-white rounded-[12px] text-[10px] font-black uppercase tracking-widest transition-all overflow-hidden z-10"
             >
-              <div className="liquid-layer group-active:top-[-50%] group-active:animate-[liquid-wave_3s_linear_infinite]"></div>
+              {/* Liquid Wave Effect on Click */}
+              <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-1000 pointer-events-none ${isClicked ? 'top-[-50%] opacity-100' : 'top-[110%] opacity-0'}`}>
+                <div className="w-40 h-40 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-[40%] animate-[spin_3s_linear_infinite] opacity-40 blur-sm"></div>
+              </div>
               
-              <span className="relative z-20 group-active:text-white transition-colors">Download CV</span>
+              <span className="relative z-20 transition-colors group-hover:text-cyan-400">Download CV</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className="w-4 h-4 relative z-20 group-hover:translate-y-0.5 transition-transform" 
+                className={`w-4 h-4 relative z-20 transition-all duration-300 ${isClicked ? 'translate-y-2 opacity-0' : 'group-hover:translate-y-0.5'}`} 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
+
+              {/* Success checkmark that appears after click */}
+              <div className={`absolute inset-0 flex items-center justify-center bg-[#0a0520] transition-all duration-500 z-30 ${isClicked ? 'translate-y-0' : 'translate-y-full'}`}>
+                 <span className="text-cyan-400 font-black tracking-widest text-[10px]">READY!</span>
+              </div>
             </button>
           </div>
         </div>
@@ -149,13 +165,14 @@ const Header: React.FC = () => {
             );
           })}
           
-          <div className="cv-btn-container group w-full max-w-[250px] rounded-2xl">
-            <div className="cv-btn-border"></div>
+          <div className="group relative p-[2px] overflow-hidden rounded-[18px] w-full max-w-[250px]">
+            <div className="absolute inset-0 opacity-100 pointer-events-none z-0">
+               <div className="absolute inset-[-250%] bg-[conic-gradient(from_0deg,transparent,#22d3ee,#a855f7,#22d3ee,transparent)] animate-[spin_4s_linear_infinite]"></div>
+            </div>
             <button 
               onClick={handleDownloadCV}
-              className="relative w-full flex items-center justify-center gap-4 px-8 py-5 bg-[#0a0520] text-white rounded-[15px] text-[12px] font-black uppercase tracking-widest transition-all overflow-hidden z-10 group-active:scale-95"
+              className="relative w-full flex items-center justify-center gap-4 px-8 py-5 bg-[#0a0520] text-white rounded-[16px] text-[12px] font-black uppercase tracking-widest transition-all overflow-hidden z-10"
             >
-              <div className="liquid-layer group-active:top-[-50%] group-active:animate-[liquid-wave_3s_linear_infinite]"></div>
               <span className="relative z-20">Download CV</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 relative z-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

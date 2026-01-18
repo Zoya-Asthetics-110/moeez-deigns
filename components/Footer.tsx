@@ -14,21 +14,15 @@ const Footer: React.FC = () => {
                <span className="text-cyan-400 text-xs font-black tracking-widest uppercase">Contact Me</span>
             </div>
 
-            {/* Unique Glitch Matrix Split Animation Heading */}
-            <div className="glitch-text-trigger relative mb-10 cursor-default inline-block">
-              <h2 className="text-6xl md:text-8xl font-black font-grotesk text-white tracking-tighter relative z-10">
-                Start a <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 underline decoration-purple-500/30 decoration-4 underline-offset-8">
-                  Project<span className="absolute left-0 bottom-[-8px] w-full h-[4px] bg-gradient-to-r from-cyan-400 to-purple-500 flicker-underline"></span>
-                </span>?
+            {/* Unified Premium Luminous Heading Animation on the ENTIRE text */}
+            <div className="relative mb-14 cursor-default group inline-block">
+              <h2 className="text-6xl md:text-8xl font-black font-grotesk text-white tracking-tighter relative z-10 premium-text-hover group-hover:scale-105 transition-all duration-700">
+                <span className="shimmer-sweep">Start a Project?</span>
+                <div className="luminous-underline w-full"></div>
               </h2>
               
-              {/* Invisible Overlay Layers for Glitch Effect */}
-              <div className="glitch-layer-1 absolute inset-0 text-6xl md:text-8xl font-black font-grotesk tracking-tighter text-cyan-400 opacity-60 mix-blend-screen hidden pointer-events-none select-none">
-                Start a Project?
-              </div>
-              <div className="glitch-layer-2 absolute inset-0 text-6xl md:text-8xl font-black font-grotesk tracking-tighter text-purple-500 opacity-60 mix-blend-screen hidden pointer-events-none select-none">
-                Start a Project?
-              </div>
+              {/* Soft Ethereal Glow Backlight */}
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-32 bg-cyan-500/10 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
             </div>
 
             <p className="text-2xl text-gray-400 mb-12 font-light leading-relaxed">

@@ -114,8 +114,8 @@ const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Tool Logos on Borders with Hover Triggered Animations */}
-              <div className="absolute left-0 top-1/2 -translate-x-[70%] -translate-y-1/2 w-16 h-16 bg-[#1E1E1E] rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 p-3 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,188,254,0.6)] hover-figma-anim cursor-pointer">
+              {/* Tool Logos on Borders with Re-added Floating Animations */}
+              <div className="absolute left-0 top-1/2 -translate-x-[70%] -translate-y-1/2 w-16 h-16 bg-[#1E1E1E] rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 p-3 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,188,254,0.6)] animate-tool-figma cursor-pointer">
                 <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <path d="M19 28.5C19 23.2533 14.7467 19 9.5 19C4.2533 19 0 23.2533 0 28.5C0 33.7467 4.2533 38 9.5 38C14.7467 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
                   <path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
@@ -125,13 +125,13 @@ const Hero: React.FC = () => {
                 </svg>
               </div>
 
-              <div className="absolute -right-6 top-4 -translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#001E36] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#31A8FF]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(49,168,255,0.6)] hover-ps-anim cursor-pointer overflow-hidden">
+              <div className="absolute -right-6 top-4 -translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#001E36] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#31A8FF]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(49,168,255,0.6)] animate-tool-ps cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#001E36] to-[#31A8FF]/20"></div>
                 <span className="relative z-10 text-[#31A8FF] font-black text-2xl tracking-tighter">Ps</span>
                 <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#31A8FF]"></div>
               </div>
 
-              <div className="absolute -right-6 bottom-4 translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#330000] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#FF9A00]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,154,0,0.6)] hover-ai-anim cursor-pointer overflow-hidden">
+              <div className="absolute -right-6 bottom-4 translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#330000] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#FF9A00]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,154,0,0.6)] animate-tool-ai cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#330000] to-[#FF9A00]/20"></div>
                 <span className="relative z-10 text-[#FF9A00] font-black text-2xl tracking-tighter">Ai</span>
                 <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#FF9A00]"></div>
