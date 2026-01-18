@@ -55,10 +55,41 @@
             z-index: 50;
         }
 
-        /* Special handling for the italic creative span characters */
-        .creative-char:hover {
-            color: #ffffff !important;
-            text-shadow: 0 0 25px rgba(168, 85, 247, 1), 0 0 50px rgba(168, 85, 247, 0.7);
+        /* --- GLITCH SPLIT ANIMATION (FOOTER EXCLUSIVE) --- */
+        @keyframes glitch-fracture {
+            0% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 2px); }
+            20% { clip-path: inset(92% 0 1% 0); transform: translate(1px, -3px); }
+            40% { clip-path: inset(43% 0 1% 0); transform: translate(-1px, 2px); }
+            60% { clip-path: inset(25% 0 58% 0); transform: translate(2px, -1px); }
+            80% { clip-path: inset(54% 0 7% 0); transform: translate(-2px, 3px); }
+            100% { clip-path: inset(58% 0 43% 0); transform: translate(1px, -2px); }
+        }
+
+        @keyframes glitch-fracture-2 {
+            0% { clip-path: inset(10% 0 80% 0); transform: translate(2px, -2px); }
+            20% { clip-path: inset(30% 0 60% 0); transform: translate(-1px, 3px); }
+            40% { clip-path: inset(50% 0 40% 0); transform: translate(1px, -2px); }
+            60% { clip-path: inset(70% 0 20% 0); transform: translate(-2px, 1px); }
+            80% { clip-path: inset(90% 0 0% 0); transform: translate(2px, -3px); }
+            100% { clip-path: inset(0% 0 90% 0); transform: translate(-1px, 2px); }
+        }
+
+        .glitch-text-trigger:hover .glitch-layer-1 {
+            animation: glitch-fracture 0.3s infinite;
+            display: block;
+        }
+        .glitch-text-trigger:hover .glitch-layer-2 {
+            animation: glitch-fracture-2 0.3s infinite;
+            display: block;
+        }
+
+        @keyframes neon-pulse-flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 10px currentColor); }
+            20%, 24%, 55% { opacity: 0.3; filter: brightness(0.5); }
+        }
+
+        .flicker-underline {
+            animation: neon-pulse-flicker 4s infinite;
         }
 
         /* Tool Logo Specific Animations */

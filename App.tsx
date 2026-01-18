@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Skills from './components/Skills';
+import Services from './components/Services';
 import AICreativeBrain from './components/AICreativeBrain';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <About />
         <Portfolio />
         <Skills />
+        <Services />
         <Footer />
       </main>
       <AICreativeBrain />

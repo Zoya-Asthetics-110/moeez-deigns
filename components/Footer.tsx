@@ -13,9 +13,24 @@ const Footer: React.FC = () => {
             <div className="inline-block px-4 py-1 bg-cyan-500/10 border border-cyan-400/30 rounded-full mb-8">
                <span className="text-cyan-400 text-xs font-black tracking-widest uppercase">Contact Me</span>
             </div>
-            <h2 className="text-6xl md:text-8xl font-black font-grotesk mb-10 text-white tracking-tighter">
-              Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 underline decoration-purple-500/30">Project</span>?
-            </h2>
+
+            {/* Unique Glitch Matrix Split Animation Heading */}
+            <div className="glitch-text-trigger relative mb-10 cursor-default inline-block">
+              <h2 className="text-6xl md:text-8xl font-black font-grotesk text-white tracking-tighter relative z-10">
+                Start a <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 underline decoration-purple-500/30 decoration-4 underline-offset-8">
+                  Project<span className="absolute left-0 bottom-[-8px] w-full h-[4px] bg-gradient-to-r from-cyan-400 to-purple-500 flicker-underline"></span>
+                </span>?
+              </h2>
+              
+              {/* Invisible Overlay Layers for Glitch Effect */}
+              <div className="glitch-layer-1 absolute inset-0 text-6xl md:text-8xl font-black font-grotesk tracking-tighter text-cyan-400 opacity-60 mix-blend-screen hidden pointer-events-none select-none">
+                Start a Project?
+              </div>
+              <div className="glitch-layer-2 absolute inset-0 text-6xl md:text-8xl font-black font-grotesk tracking-tighter text-purple-500 opacity-60 mix-blend-screen hidden pointer-events-none select-none">
+                Start a Project?
+              </div>
+            </div>
+
             <p className="text-2xl text-gray-400 mb-12 font-light leading-relaxed">
               Available for freelance collaborations and permanent creative roles. Let's make something <span className="text-white font-bold italic">legendary</span>.
             </p>
@@ -44,33 +59,44 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-[#0a0520] p-12 rounded-[3rem] border border-white/5 neon-border-purple relative shadow-2xl">
-            <div className="absolute top-0 right-10 translate-y-[-50%] bg-[#030014] border border-purple-500/30 px-6 py-2 rounded-full">
-               <span className="text-purple-400 text-[10px] font-black tracking-widest uppercase">Quick Response</span>
+          {/* Animated Contact Form Card */}
+          <div className="relative group perspective-1000">
+            {/* Animated Rotating Border Background */}
+            <div className="absolute inset-[-2px] rounded-[3.1rem] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+              <div className="absolute inset-[-200%] bg-[conic-gradient(from_0deg,transparent,#22d3ee,#a855f7,#22d3ee,transparent)] animate-[spin_4s_linear_infinite]"></div>
             </div>
-            
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-4">Full Name</label>
-                  <input type="text" placeholder="Moeez Design" className="w-full bg-[#030014] border border-white/10 rounded-2xl px-6 py-4 focus:neon-border-cyan outline-none transition-all placeholder:text-gray-700 text-white" />
+
+            {/* Inner Form Container */}
+            <div className="bg-[#0a0520] p-12 rounded-[3rem] border border-white/5 neon-border-purple relative shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_0_50px_rgba(168,85,247,0.2)]">
+              <div className="absolute top-0 right-10 translate-y-[-50%] bg-[#030014] border border-purple-500/30 px-6 py-2 rounded-full z-20 group-hover:border-purple-400 transition-colors">
+                <span className="text-purple-400 text-[10px] font-black tracking-widest uppercase">Quick Response</span>
+              </div>
+              
+              <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-4 group-hover:text-cyan-400 transition-colors">Full Name</label>
+                    <input type="text" placeholder="Moeez Design" className="w-full bg-[#030014] border border-white/10 rounded-2xl px-6 py-4 focus:neon-border-cyan outline-none transition-all placeholder:text-gray-700 text-white" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-4 group-hover:text-cyan-400 transition-colors">Email</label>
+                    <input type="email" placeholder="moeez@brand.com" className="w-full bg-[#030014] border border-white/10 rounded-2xl px-6 py-4 focus:neon-border-cyan outline-none transition-all placeholder:text-gray-700 text-white" />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-4">Email</label>
-                  <input type="email" placeholder="moeez@brand.com" className="w-full bg-[#030014] border border-white/10 rounded-2xl px-6 py-4 focus:neon-border-cyan outline-none transition-all placeholder:text-gray-700 text-white" />
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-4 group-hover:text-purple-400 transition-colors">Message</label>
+                  <textarea placeholder="Tell me about your vision..." rows={5} className="w-full bg-[#030014] border border-white/10 rounded-2xl px-6 py-4 focus:neon-border-purple outline-none transition-all placeholder:text-gray-700 text-white resize-none"></textarea>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-4">Message</label>
-                <textarea placeholder="Tell me about your vision..." rows={5} className="w-full bg-[#030014] border border-white/10 rounded-2xl px-6 py-4 focus:neon-border-purple outline-none transition-all placeholder:text-gray-700 text-white resize-none"></textarea>
-              </div>
-              <button className="group w-full py-5 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-black rounded-2xl transition-all shadow-xl shadow-purple-500/20 active:scale-95 uppercase tracking-widest text-sm hover:glow-cyan">
-                <span className="flex items-center justify-center gap-3">
-                  Send Inquiry
-                  <span className="group-hover:translate-x-2 transition-transform">🚀</span>
-                </span>
-              </button>
-            </form>
+                <button className="group/btn w-full py-5 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-black rounded-2xl transition-all shadow-xl shadow-purple-500/20 active:scale-95 uppercase tracking-widest text-sm hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] overflow-hidden relative">
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    Send Inquiry
+                    <span className="group-hover/btn:translate-x-2 transition-transform">🚀</span>
+                  </span>
+                  {/* Shimmer effect inside button */}
+                  <div className="absolute inset-0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
