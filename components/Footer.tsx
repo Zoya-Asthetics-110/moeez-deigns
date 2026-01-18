@@ -21,10 +21,15 @@ const Footer: React.FC = () => {
             </p>
             
             <div className="space-y-10">
-              <a href="mailto:hello@moeez.works" className="group flex flex-col items-start gap-2">
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=moeezi396@gmail.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex flex-col items-start gap-2"
+              >
                 <span className="text-gray-500 text-xs font-bold uppercase tracking-[0.3em]">Email Me</span>
                 <span className="text-3xl lg:text-5xl font-black text-white group-hover:text-cyan-400 transition-colors duration-300 break-all neon-text-cyan">
-                  hello@moeez.works
+                  moeezi396@gmail.com
                 </span>
               </a>
               

@@ -90,6 +90,18 @@ const Skills: React.FC = () => {
     { initials: "AD", title: "Ad Campaign Design", description: "Visuals for digital marketing", level: 85 }
   ];
 
+  // Helper to split text into interactive span characters
+  const renderInteractiveText = (text: string, isCreative: boolean = false) => {
+    return text.split('').map((char, index) => (
+      <span 
+        key={index} 
+        className={`interactive-char ${isCreative ? 'creative-char' : ''} ${char === ' ' ? 'mr-3' : ''}`}
+      >
+        {char}
+      </span>
+    ));
+  };
+
   return (
     <section id="skills" className="py-32 bg-[#030014] relative overflow-hidden">
       {/* Decorative Background Elements */}
@@ -101,8 +113,13 @@ const Skills: React.FC = () => {
           <div className="inline-block px-5 py-2 mb-6 bg-cyan-400/5 border border-cyan-400/20 rounded-full">
             <span className="text-cyan-400 text-[11px] font-black tracking-[0.4em] uppercase">The Tech Arsenal</span>
           </div>
-          <h2 className="text-5xl md:text-8xl font-black font-grotesk text-white leading-tight tracking-tighter mb-8">
-            Visual <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 italic">Mastery</span>
+          <h2 className="text-5xl md:text-8xl font-black font-grotesk text-white leading-tight tracking-tighter mb-8 cursor-default">
+            <span className="inline-block mr-4">
+               {renderInteractiveText("Visual")}
+            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 italic">
+               {renderInteractiveText("Mastery", true)}
+            </span>
           </h2>
           <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto italic">
             "Merging artistic intuition with technical precision to deliver pixel-perfect digital experiences."

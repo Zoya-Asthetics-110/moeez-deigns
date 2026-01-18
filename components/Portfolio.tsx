@@ -5,10 +5,8 @@ import { PROJECTS } from '../constants';
 const Portfolio: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
 
-  // Mapping buttons to match the requested image and filter the project data
   const filterButtons = ['ALL', 'BRANDING', 'UI/UX', 'PRINT'];
 
-  // Filter logic: 'ALL' shows everything, others match the category string
   const filteredProjects = selectedCategory === 'ALL' 
     ? PROJECTS 
     : PROJECTS.filter(project => {
@@ -16,6 +14,18 @@ const Portfolio: React.FC = () => {
         if (selectedCategory === 'UI/UX') return category.includes('UI/UX');
         return category === selectedCategory;
       });
+
+  // Helper to split text into interactive span characters
+  const renderInteractiveText = (text: string, isCreative: boolean = false) => {
+    return text.split('').map((char, index) => (
+      <span 
+        key={index} 
+        className={`interactive-char ${isCreative ? 'creative-char' : ''} ${char === ' ' ? 'mr-3' : ''}`}
+      >
+        {char}
+      </span>
+    ));
+  };
 
   return (
     <section id="work" className="py-32 bg-[#030014] relative overflow-hidden">
@@ -25,8 +35,16 @@ const Portfolio: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div className="max-w-xl">
-            <h2 className="text-5xl md:text-7xl font-black font-grotesk mb-6 text-white leading-tight">
-              Selected <span className="text-cyan-400 italic neon-text-cyan">Creative</span> Projects
+            <h2 className="text-5xl md:text-7xl font-black font-grotesk mb-6 text-white leading-tight cursor-default">
+              <span className="block mb-2">
+                {renderInteractiveText("Selected")}
+              </span>
+              <span className="text-cyan-400 italic neon-text-cyan">
+                {renderInteractiveText("Creative", true)}
+              </span>
+              <span className="block mt-2">
+                {renderInteractiveText("Projects")}
+              </span>
             </h2>
             <p className="text-gray-400 text-lg">
               A curated showcase of design solutions where bold aesthetics meet tactical brand goals.
