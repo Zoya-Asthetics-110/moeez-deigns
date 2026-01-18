@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     { name: 'Home', id: 'home' },
     { name: 'About', id: 'about' },
     { name: 'Work', id: 'work' },
+    { name: 'Concepts', id: 'concepts' },
     { name: 'Skills', id: 'skills' },
     { name: 'Services', id: 'services' },
     { name: 'Reviews', id: 'testimonials' },
@@ -94,7 +95,7 @@ const Header: React.FC = () => {
     <nav className={`fixed top-0 left-0 w-full z-[99999] transition-all duration-500 ${scrolled ? 'bg-[#030014]/95 backdrop-blur-2xl py-3 border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]' : 'bg-[#030014]/10 backdrop-blur-sm py-6'}`}>
       {/* Scroll Progress Indicator Line */}
       <div 
-        className="absolute bottom-0 left-0 h-[2px] bg-cyan-400 transition-all duration-100 z-[100000]"
+        className="absolute bottom-0 left-0 h-[2px] bg-cyan-400 transition-all duration-1000 z-[100000]"
         style={{ width: `${scrollProgress}%`, boxShadow: '0 0 15px #22d3ee' }}
       />
       

@@ -7,6 +7,14 @@ export interface Project {
   description: string;
 }
 
+export interface Concept {
+  id: number;
+  title: string;
+  tags: string[];
+  image: string;
+  year: string;
+}
+
 export interface Skill {
   name: string;
   level: number;
