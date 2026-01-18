@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Project, Skill, Concept } from './types';
+import { Project, Skill, Concept, PressAsset, Stat } from './types';
 
 export const PROJECTS: Project[] = [
   {
@@ -62,6 +62,44 @@ export const CONCEPTS: Concept[] = [
     image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=800",
     year: "2024"
   }
+];
+
+export const PRESS_ASSETS: PressAsset[] = [
+  {
+    id: 1,
+    name: "Primary Neon Logo",
+    type: "PNG / SVG",
+    preview: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=400",
+    size: "2.4 MB"
+  },
+  {
+    id: 2,
+    name: "Mono Dark Logo",
+    type: "PNG",
+    preview: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=400",
+    size: "1.1 MB"
+  },
+  {
+    id: 3,
+    name: "Studio Headshots",
+    type: "ZIP / JPG",
+    preview: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=400",
+    size: "45 MB"
+  },
+  {
+    id: 4,
+    name: "Brand Patterns",
+    type: "AI / PDF",
+    preview: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=400",
+    size: "12 MB"
+  }
+];
+
+export const STATS: Stat[] = [
+  { id: 1, label: "Projects Completed", value: "150", suffix: "+", icon: "🚀", color: "cyan" },
+  { id: 2, label: "Coffee Consumed", value: "840", suffix: "L", icon: "☕", color: "purple" },
+  { id: 3, label: "Design Hours", value: "4200", suffix: "+", icon: "⏳", color: "blue" },
+  { id: 4, label: "Happy Clients", value: "98", suffix: "%", icon: "💎", color: "cyan" }
 ];
 
 export const SKILLS: Skill[] = [

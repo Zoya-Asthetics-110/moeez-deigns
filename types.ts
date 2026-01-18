@@ -15,6 +15,23 @@ export interface Concept {
   year: string;
 }
 
+export interface PressAsset {
+  id: number;
+  name: string;
+  type: string;
+  preview: string;
+  size: string;
+}
+
+export interface Stat {
+  id: number;
+  label: string;
+  value: string;
+  suffix: string;
+  icon: string;
+  color: string;
+}
+
 export interface Skill {
   name: string;
   level: number;

@@ -6,6 +6,8 @@ import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Concepts from './components/Concepts';
 import Skills from './components/Skills';
+import Stats from './components/Stats';
+import PressKit from './components/PressKit';
 import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import AICreativeBrain from './components/AICreativeBrain';
@@ -44,6 +46,8 @@ const App: React.FC = () => {
           <Portfolio />
           <Concepts />
           <Skills />
+          <Stats />
+          <PressKit />
           <Services />
           <Testimonials />
           <Footer />
