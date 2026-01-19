@@ -31,66 +31,72 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, company, 
   return (
     <div 
       ref={cardRef}
-      className={`group relative transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-90'
+      className={`group relative transition-all duration-[1500ms] cubic-bezier(0.19, 1, 0.22, 1) ${
+        isVisible 
+          ? 'animate-[testimonial-assemble_1.2s_cubic-bezier(0.19,1,0.22,1)_forwards] opacity-100' 
+          : 'opacity-0 scale-50 rotate-12 translate-y-32 blur-md'
       }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      style={{ animationDelay: `${index * 200}ms` }}
     >
-      {/* Sleek Rotating Neon Border Container */}
-      <div className="relative p-[1.5px] overflow-hidden rounded-[2.5rem] h-full transition-transform duration-500 group-hover:-translate-y-4 group-hover:rotate-1">
+      {/* Cinematic Assembly Wrapper with Infinite Loop */}
+      <div className={`${isVisible ? 'animate-[testimonial-float_6s_infinite_ease-in-out]' : ''} h-full`} style={{ animationDelay: `${index * 500}ms` }}>
         
-        {/* Neon Rotation Layer */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
-          <div className="absolute inset-[-250%] bg-[conic-gradient(from_0deg,transparent,#a855f7,#22d3ee,#a855f7,transparent)] animate-[spin_5s_linear_infinite]"></div>
-        </div>
-
-        {/* Main Card Content */}
-        <div className="relative z-10 h-full bg-[#0a0520]/80 backdrop-blur-3xl p-10 rounded-[2.4rem] border border-white/5 overflow-hidden flex flex-col">
+        {/* Sleek Rotating Neon Border Container */}
+        <div className="relative p-[1.5px] overflow-hidden rounded-[2.5rem] h-full transition-transform duration-700 group-hover:-translate-y-6 group-hover:rotate-1">
           
-          {/* Decorative Background Quote Symbol */}
-          <div className="absolute -top-6 -right-4 text-[12rem] font-black text-white/5 group-hover:text-cyan-400/10 transition-colors duration-700 select-none">
-            "
+          {/* Neon Rotation Layer */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
+            <div className="absolute inset-[-250%] bg-[conic-gradient(from_0deg,transparent,#a855f7,#22d3ee,#a855f7,transparent)] animate-[spin_5s_linear_infinite]"></div>
           </div>
 
-          {/* Client Avatar Section */}
-          <div className="flex items-center gap-5 mb-8 relative z-10">
-            <div className="relative">
-              {/* Pulsing Outer Ring */}
-              <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-400 to-purple-600 rounded-full blur-[4px] opacity-40 group-hover:opacity-100 animate-pulse"></div>
-              <img 
-                src={avatar} 
-                alt={name} 
-                className="relative w-16 h-16 rounded-full object-cover border-2 border-white/10 group-hover:border-white/40 transition-all duration-500"
-              />
+          {/* Main Card Content */}
+          <div className="relative z-10 h-full bg-[#0a0520]/80 backdrop-blur-3xl p-10 rounded-[2.4rem] border border-white/5 overflow-hidden flex flex-col">
+            
+            {/* Decorative Background Quote Symbol */}
+            <div className="absolute -top-6 -right-4 text-[12rem] font-black text-white/5 group-hover:text-cyan-400/10 transition-colors duration-700 select-none">
+              "
             </div>
-            <div>
-              <h4 className="text-xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors">{name}</h4>
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">{role} @ <span className="text-purple-400">{company}</span></p>
-            </div>
-          </div>
 
-          {/* Review Text */}
-          <div className="flex-1 relative z-10">
-            <p className="text-gray-300 text-lg font-light leading-relaxed italic group-hover:text-white transition-colors">
-              "{content}"
-            </p>
-          </div>
-
-          {/* Star Rating & Status */}
-          <div className="mt-8 flex justify-between items-center relative z-10">
-            <div className="flex gap-1">
-              {[1, 2, 3, 4, 5].map(star => (
-                <span key={star} className="text-cyan-400 text-sm drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">★</span>
-              ))}
+            {/* Client Avatar Section */}
+            <div className="flex items-center gap-5 mb-8 relative z-10">
+              <div className="relative">
+                {/* Pulsing Outer Ring */}
+                <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-400 to-purple-600 rounded-full blur-[4px] opacity-40 group-hover:opacity-100 animate-pulse"></div>
+                <img 
+                  src={avatar} 
+                  alt={name} 
+                  className="relative w-16 h-16 rounded-full object-cover border-2 border-white/10 group-hover:border-white/40 transition-all duration-500"
+                />
+              </div>
+              <div>
+                <h4 className="text-xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors">{name}</h4>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">{role} @ <span className="text-purple-400">{company}</span></p>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              <span className="text-[9px] font-black uppercase tracking-widest text-gray-600">Verified Collaboration</span>
-            </div>
-          </div>
 
-          {/* Bottom Interactive Glow */}
-          <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            {/* Review Text */}
+            <div className="flex-1 relative z-10">
+              <p className="text-gray-300 text-lg font-light leading-relaxed italic group-hover:text-white transition-colors">
+                "{content}"
+              </p>
+            </div>
+
+            {/* Star Rating & Status */}
+            <div className="mt-8 flex justify-between items-center relative z-10">
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map(star => (
+                  <span key={star} className="text-cyan-400 text-sm drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">★</span>
+                ))}
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span className="text-[9px] font-black uppercase tracking-widest text-gray-600">Verified Collaboration</span>
+              </div>
+            </div>
+
+            {/* Bottom Interactive Glow */}
+            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -168,6 +174,30 @@ const Testimonials: React.FC = () => {
         <div className="absolute top-1/2 left-10 w-2 h-2 bg-purple-500 rounded-full animate-ping opacity-20"></div>
         <div className="absolute bottom-1/2 right-20 w-3 h-3 bg-cyan-400 rounded-full animate-pulse opacity-10"></div>
       </div>
+
+      <style>{`
+        @keyframes testimonial-assemble {
+          0% { 
+            transform: scale(0.4) rotate(15deg) translateY(100px); 
+            filter: blur(15px); 
+            opacity: 0; 
+          }
+          40% {
+            transform: scale(1.1) rotate(-5deg) translateY(-20px);
+            filter: blur(0);
+            opacity: 1;
+          }
+          100% { 
+            transform: scale(1) rotate(0) translateY(0); 
+            filter: blur(0); 
+            opacity: 1; 
+          }
+        }
+        @keyframes testimonial-float {
+          0%, 100% { transform: translateY(0) rotate(0); }
+          50% { transform: translateY(-15px) rotate(1deg); }
+        }
+      `}</style>
     </section>
   );
 };

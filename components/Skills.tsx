@@ -35,6 +35,9 @@ const SkillCard: React.FC<SkillCardProps> = ({ initials, title, description, lev
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
+      {/* --- NEW: CINEMATIC LIGHT BEHIND CARD (AURA GLOW) --- */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-blue-500/0 to-purple-600/0 group-hover:from-cyan-400/40 group-hover:via-blue-500/20 group-hover:to-purple-600/40 blur-[80px] rounded-full transition-all duration-1000 scale-50 group-hover:scale-150 -z-10 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+
       {/* --- SLEEK THIN NEON BORDER CONTAINER --- */}
       <div className="relative p-[1.5px] overflow-hidden rounded-[2.5rem] h-full w-full">
         
@@ -46,8 +49,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ initials, title, description, lev
         {/* Main Card Body (Inside the thin border) */}
         <div className="relative z-10 w-full h-full bg-[#0a0520] p-8 rounded-[2.4rem] border border-white/5 backdrop-blur-xl group-hover:border-transparent transition-all duration-500 overflow-hidden flex flex-col">
           
-          {/* Background Interactive Glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-purple-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-700"></div>
+          {/* Background Interactive Inner Glow */}
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-purple-500/0 to-cyan-500/0 group-hover:from-cyan-500/15 group-hover:to-purple-500/15 transition-all duration-700"></div>
           
           {/* Top Center Badge */}
           <div className="flex justify-center mb-8 relative z-10">

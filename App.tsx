@@ -54,7 +54,6 @@ const App: React.FC = () => {
           <Testimonials />
           <Footer />
         </main>
-        <AICreativeBrain />
 
         <style>{`
           @keyframes fadeIn {
@@ -63,6 +62,9 @@ const App: React.FC = () => {
           }
         `}</style>
       </div>
+
+      {/* AICreativeBrain placed here to ensure it stays fixed and visible regardless of scroll/wrapper animations */}
+      <AICreativeBrain />
     </>
   );
 };

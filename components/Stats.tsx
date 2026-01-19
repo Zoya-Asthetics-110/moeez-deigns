@@ -85,7 +85,10 @@ const Stats: React.FC = () => {
               className="group relative"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="relative p-[1.5px] rounded-[3rem] overflow-hidden h-full transition-transform duration-500 hover:-translate-y-4">
+              {/* --- NEW: CINEMATIC LIGHT BEHIND CARD (AURA GLOW) --- */}
+              <div className={`absolute inset-0 blur-[80px] rounded-full transition-all duration-1000 scale-50 group-hover:scale-125 -z-10 opacity-0 group-hover:opacity-100 pointer-events-none ${stat.color === 'cyan' ? 'bg-cyan-400/40' : 'bg-purple-600/40'}`}></div>
+
+              <div className="relative p-[1.5px] rounded-[3rem] overflow-hidden h-full transition-all duration-500 group-hover:-translate-y-4">
                 
                 {/* Border Glow Animation */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0`}>
@@ -93,14 +96,17 @@ const Stats: React.FC = () => {
                 </div>
 
                 {/* Card Body */}
-                <div className="relative z-10 h-full bg-[#0a0520]/80 backdrop-blur-3xl p-10 rounded-[2.9rem] border border-white/5 flex flex-col items-center text-center">
+                <div className="relative z-10 h-full bg-[#0a0520]/80 backdrop-blur-3xl p-10 rounded-[2.9rem] border border-white/5 flex flex-col items-center text-center overflow-hidden">
                   
+                  {/* Internal Shimmer Wave on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_3s_infinite] pointer-events-none"></div>
+
                   {/* Floating Icon */}
-                  <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
+                  <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-2xl group-hover:border-white/30">
                     {stat.icon}
                   </div>
 
-                  <div className={`text-5xl font-black mb-3 tracking-tighter ${stat.color === 'cyan' ? 'text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]' : 'text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]'}`}>
+                  <div className={`text-5xl font-black mb-3 tracking-tighter transition-all duration-500 group-hover:scale-110 ${stat.color === 'cyan' ? 'text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.6)]' : 'text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]'}`}>
                     <CountUp end={parseInt(stat.value)} suffix={stat.suffix} />
                   </div>
 
@@ -108,8 +114,8 @@ const Stats: React.FC = () => {
                     {stat.label}
                   </h3>
 
-                  {/* Internal Glow */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none rounded-[2.9rem] bg-gradient-to-br ${stat.color === 'cyan' ? 'from-cyan-400 to-blue-600' : 'from-purple-500 to-purple-800'}`}></div>
+                  {/* Internal Pulsing Glow */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none rounded-[2.9rem] bg-gradient-to-br animate-pulse ${stat.color === 'cyan' ? 'from-cyan-400 to-blue-600' : 'from-purple-500 to-purple-800'}`}></div>
                 </div>
               </div>
             </div>
@@ -135,6 +141,10 @@ const Stats: React.FC = () => {
         @keyframes data-stream {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-150%) skewX(-30deg); }
+          100% { transform: translateX(150%) skewX(-30deg); }
         }
       `}</style>
     </section>

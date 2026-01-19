@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
           {/* Main Core Glow */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.4)_0%,rgba(34,211,238,0.2)_30%,transparent_70%)] blur-[100px] animate-[pulse_4s_infinite]"></div>
           
-          {/* Internal Structure Lines (CSS-only Grid approximation for the lattice look) */}
+          {/* Internal Structure Lines */}
           <div className="absolute inset-0 opacity-20 border-[0.5px] border-white/20 rounded-full rotate-[15deg] scale-95"></div>
           <div className="absolute inset-0 opacity-10 border-[0.5px] border-white/10 rounded-full -rotate-[15deg] scale-90"></div>
           
@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side: Enhanced Interactive Asset */}
+          {/* Right Side: Enhanced Interactive Asset with Infinite Scatter Animation */}
           <div className="relative h-[550px] lg:h-[650px] flex items-center justify-center pt-10 perspective-1000">
             
             {/* Main Center Container for Card + Floating Tool Logos */}
@@ -108,19 +108,23 @@ const Hero: React.FC = () => {
                 <div className="w-full h-full bg-gradient-to-br from-cyan-500/20 via-blue-600/20 to-purple-600/20 rounded-[2rem] flex flex-col items-center justify-center relative overflow-hidden border border-white/5 transition-all duration-700 group-hover:bg-opacity-40">
                   <div className="absolute inset-0 bg-black/40 opacity-30 mix-blend-overlay"></div>
                   
-                  {/* Central Content Area Re-designed to match requested "Fahad Malik" style */}
+                  {/* Central Content Area (REVERTED TO STATIC) */}
                   <div className="relative z-10 flex flex-col items-center justify-center -mt-4">
-                    {/* The initials 'MI.' */}
-                    <div className="relative flex items-end">
-                      <div className="text-[10rem] font-black text-white select-none drop-shadow-2xl transition-all duration-1000 group-hover:scale-110 group-hover:text-cyan-100 leading-[0.8]">
-                        MI
+                    <div className="relative flex items-end select-none">
+                      <div className="flex leading-[0.8]">
+                        <span className="text-[10rem] font-black text-white drop-shadow-2xl transition-all duration-1000 group-hover:text-cyan-100">
+                          M
+                        </span>
+                        <span className="text-[10rem] font-black text-white drop-shadow-2xl transition-all duration-1000 group-hover:text-cyan-100">
+                          I
+                        </span>
                       </div>
                       {/* The Dot */}
-                      <div className="w-10 h-10 bg-cyan-400 rounded-full mb-3 ml-2 shadow-[0_0_20px_rgba(34,211,238,0.8)] animate-pulse"></div>
+                      <div className="w-10 h-10 bg-cyan-400 rounded-full mb-3 ml-2 shadow-[0_0_20px_rgba(34,211,238,0.8)]"></div>
                     </div>
 
                     {/* Horizontal Divider Line */}
-                    <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent my-6"></div>
+                    <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent my-6 opacity-60"></div>
 
                     {/* Full Name: MOEEZ IMRAN */}
                     <div className="text-2xl font-black tracking-[0.6em] text-cyan-400 group-hover:neon-text-cyan transition-all duration-700 uppercase whitespace-nowrap">
@@ -130,17 +134,11 @@ const Hero: React.FC = () => {
                   
                   {/* Glowing Core Effect */}
                   <div className="absolute w-40 h-40 bg-cyan-400/10 blur-[80px] rounded-full animate-pulse group-hover:bg-cyan-400/30 group-hover:scale-150 transition-all duration-1000" />
-                  
-                  {/* Design Particles on Hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
-                     <div className="absolute top-10 left-10 w-1.5 h-1.5 bg-white rounded-full animate-ping" />
-                     <div className="absolute bottom-10 right-10 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping delay-300" />
-                  </div>
                 </div>
               </div>
 
-              {/* Tool Logos on Borders with Re-added Floating Animations */}
-              <div className="absolute left-0 top-1/2 -translate-x-[70%] -translate-y-1/2 w-16 h-16 bg-[#1E1E1E] rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 p-3 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,188,254,0.6)] animate-tool-figma cursor-pointer">
+              {/* Tool Logos on Borders with INFINITE SCATTER ANIMATION */}
+              <div className="absolute left-0 top-1/2 -translate-x-[70%] -translate-y-1/2 w-16 h-16 bg-[#1E1E1E] rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 p-3 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,188,254,0.6)] animate-[figma-scatter_10s_infinite_ease-in-out] cursor-pointer">
                 <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <path d="M19 28.5C19 23.2533 14.7467 19 9.5 19C4.2533 19 0 23.2533 0 28.5C0 33.7467 4.2533 38 9.5 38C14.7467 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
                   <path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
@@ -150,13 +148,13 @@ const Hero: React.FC = () => {
                 </svg>
               </div>
 
-              <div className="absolute -right-6 top-4 -translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#001E36] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#31A8FF]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(49,168,255,0.6)] animate-tool-ps cursor-pointer overflow-hidden">
+              <div className="absolute -right-6 top-4 -translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#001E36] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#31A8FF]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(49,168,255,0.6)] animate-[ps-scatter_10s_infinite_ease-in-out_0.5s] cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#001E36] to-[#31A8FF]/20"></div>
                 <span className="relative z-10 text-[#31A8FF] font-black text-2xl tracking-tighter">Ps</span>
                 <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#31A8FF]"></div>
               </div>
 
-              <div className="absolute -right-6 bottom-4 translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#330000] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#FF9A00]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,154,0,0.6)] animate-tool-ai cursor-pointer overflow-hidden">
+              <div className="absolute -right-6 bottom-4 translate-y-1/2 translate-x-1/2 w-16 h-16 bg-[#330000] rounded-2xl flex flex-col items-center justify-center shadow-2xl border border-[#FF9A00]/30 z-[100] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,154,0,0.6)] animate-[ai-scatter_10s_infinite_ease-in-out_1s] cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#330000] to-[#FF9A00]/20"></div>
                 <span className="relative z-10 text-[#FF9A00] font-black text-2xl tracking-tighter">Ai</span>
                 <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#FF9A00]"></div>
@@ -169,6 +167,21 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes figma-scatter {
+          0%, 15%, 85%, 100% { transform: translate(-70%, -50%) rotate(0deg) scale(1); filter: blur(0); opacity: 1; }
+          40%, 60% { transform: translate(-250%, -150%) rotate(-45deg) scale(0.6); filter: blur(5px); opacity: 0.3; }
+        }
+        @keyframes ps-scatter {
+          0%, 15%, 85%, 100% { transform: translate(50%, -50%) rotate(0deg) scale(1); filter: blur(0); opacity: 1; }
+          40%, 60% { transform: translate(180%, -180%) rotate(45deg) scale(0.6); filter: blur(5px); opacity: 0.3; }
+        }
+        @keyframes ai-scatter {
+          0%, 15%, 85%, 100% { transform: translate(50%, 50%) rotate(0deg) scale(1); filter: blur(0); opacity: 1; }
+          40%, 60% { transform: translate(200%, 150%) rotate(90deg) scale(0.6); filter: blur(5px); opacity: 0.3; }
+        }
+      `}</style>
     </section>
   );
 };
